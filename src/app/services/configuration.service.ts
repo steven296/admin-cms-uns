@@ -23,4 +23,7 @@ export class ConfigurationService {
     return this._http.put(this.url + 'config/update', configurationForm);
   }
 
+  updateFavicon(formData) {
+    return this._http.post(this.url + 'config/storeimagen/favicon', formData);
+  }
 }
