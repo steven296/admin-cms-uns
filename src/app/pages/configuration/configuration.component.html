@@ -1,1 +1,125 @@
-<p>configuration works!</p>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <form (ngSubmit)="onSubmit(configurationForm)" #configurationForm="ngForm" class="form-horizontal form-bordered">
+                    <div class="form-body">
+                      <div class="form-group row">
+                        <label class="control-label text-right col-md-3">Favicon</label>
+                        <div class="col-md-9">
+                          <input type="file" class="form-control" id="iconInputFile">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="control-label text-right col-md-3">Logo</label>
+                        <div class="col-md-9">
+                          <input type="file" class="form-control" id="logoInputFile">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="control-label text-right col-md-3">Color Menu</label>
+                        <div class="col-9">
+                            <input class="form-control" type="color" id="colorMenuInput" name="colormenu" #colormenu="ngModel" [(ngModel)]="configuration.colormenu">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="control-label text-right col-md-3">Background Menu</label>
+                        <div class="col-9">
+                            <input class="form-control" type="color" id="backgroundMenuInput" name="backgroundmenu" #backgroundmenu="ngModel" [(ngModel)]="configuration.backgroundmenu">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="control-label text-right col-md-3">Color Footer</label>
+                        <div class="col-9">
+                            <input class="form-control" type="color" id="colorFooterInput" name="colorfooter" #colorfooter="ngModel" [(ngModel)]="configuration.colorfooter">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="control-label text-right col-md-3">Background Footer</label>
+                        <div class="col-9">
+                            <input class="form-control" type="color" id="backgroundFooterInput" name="backgroundfooter" #backgroundfooter="ngModel" [(ngModel)]="configuration.backgroundfooter">
+                        </div>
+                      </div>
+
+                        <div class="form-group row">
+                          <label class="control-label text-right col-md-3">Portada</label>
+                          <div class="col-md-9">
+                            <input type="file" class="form-control" id="portadaInputFile">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="control-label text-right col-md-3">Direccion</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control"  name="direccion" #direccion="ngModel" [(ngModel)]="configuration.direccion">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="control-label text-right col-md-3">Telefono</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="telefono" #telefono="ngModel" [(ngModel)]="configuration.telefono">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="control-label text-right col-md-3">Correo</label>
+                            <div class="col-md-9">
+                                <input type="email" class="form-control" name="correo" #correo="ngModel" [(ngModel)]="configuration.correo">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="control-label text-right col-md-3">Facebook</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="facebook" #facebook="ngModel" [(ngModel)]="configuration.facebook">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="control-label text-right col-md-3">Instagram</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control"  name="instagram" #instagram="ngModel" [(ngModel)]="configuration.instagram">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="control-label text-right col-md-3">Twitter</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control"  name="twitter" #twitter="ngModel" [(ngModel)]="configuration.twitter">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="control-label text-right col-md-3">Estado</label>
+                            <div class="col-md-9">
+                                <select class="form-control custom-select" name="actived" #actived="ngModel" [(ngModel)]="configuration.actived">
+                                    <option value="1">Activo</option>
+                                    <option value="2">Mantenimiento</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="offset-sm-3 col-md-9">
+                                        <button type="submit" class="btn btn-danger"> <i class="fa fa-check"></i> Actualizar</button>
+                                        <button type="button" class="btn btn-inverse ml-2">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

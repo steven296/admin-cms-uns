@@ -1,3 +1,10 @@
 .topbar .top-navbar .navbar-header {
     background: #ef5350;
 }
+.sidebar-nav ul li a.active {
+  background: none;
+}
+
+.sidebar-nav ul li.active {
+  background: #21262E !important;
+}

@@ -11,10 +11,10 @@ const routes: Routes = [
     path: 'admin',
     component: PagesComponent,
     children: [
-      { path: '', component: DashboardComponent },
-      { path: 'configuration', component: ConfigurationComponent },
-      { path: 'sliders', component: SlidersComponent },
-      //{ path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard'} },
+      { path: 'configuration', component: ConfigurationComponent, data: { title: 'Configuraciones'}  },
+      { path: 'sliders', component: SlidersComponent, data: { title: 'Sliders'}  },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     ]
   },
 ];

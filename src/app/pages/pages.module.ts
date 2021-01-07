@@ -1,7 +1,10 @@
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component';
@@ -23,8 +26,11 @@ import { SlidersComponent } from './sliders/sliders.component';
     SlidersComponent
   ],
   imports: [
+    BrowserModule,
     CommonModule,
-    RouterModule
+    FormsModule,
+    RouterModule,
+    HttpClientModule
   ],
   exports: [
     SidebarComponent,
