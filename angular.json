@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "admin-tendencia"
+  "defaultProject": "admin-tendencia",
+  "cli": {
+    "analytics": "8582a0a6-1804-4a12-8a3b-e6a0a1a1f8ee"
+  }
 }

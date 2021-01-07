@@ -8,6 +8,7 @@ import { PagesModule } from './pages/pages.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -17,12 +18,13 @@ import { NotfoundComponent } from './notfound/notfound.component';
     NotfoundComponent,
 
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    PagesModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        PagesModule,
+        HttpClientModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
