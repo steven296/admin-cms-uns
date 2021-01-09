@@ -8,3 +8,11 @@
 .sidebar-nav ul li.active {
   background: #21262E !important;
 }
+
+.preview-img {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #f0f0f0;
+    margin-bottom: 20px;
+    text-align: center;
+}

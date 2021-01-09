@@ -11,6 +11,9 @@ import {AuthService} from "../../auth/auth.service";
 export class ConfigurationComponent implements OnInit {
 
   public configuration: Configuration;
+  public uploadedFavicon: File;
+  public uploadedLogo: File;
+  public uploadedPortada: File;
 
   constructor(
     private _configurationService: ConfigurationService,
@@ -47,4 +50,48 @@ export class ConfigurationComponent implements OnInit {
     }
   }
 
+  onFaviconChange(event) {
+    this.uploadedFavicon = event.target.files[0];
+  }
+
+  onFaviconSubmit() {
+    let formData = new FormData();
+    formData.append("imagen", this.uploadedFavicon, this.uploadedFavicon.name);
+
+    this._configurationService.updateFavicon(formData).subscribe(
+      response => {
+        this.configuration.favicon = response.favicon;
+      }
+    );
+  }
+
+  onLogoChange(event) {
+    this.uploadedLogo = event.target.files[0];
+  }
+
+  onLogoSubmit() {
+    let formData = new FormData();
+    formData.append("imagen", this.uploadedLogo, this.uploadedLogo.name);
+
+    this._configurationService.updateLogo(formData).subscribe(
+      response => {
+        this.configuration.logo = response.logo;
+      }
+    );
+  }
+
+  onPortadaChange(event) {
+    this.uploadedPortada = event.target.files[0];
+  }
+
+  onPortadaSubmit() {
+    let formData = new FormData();
+    formData.append("imagen", this.uploadedPortada, this.uploadedPortada.name);
+
+    this._configurationService.updatePortada(formData).subscribe(
+      response => {
+        this.configuration.portada = response.portada;
+      }
+    );
+  }
 }

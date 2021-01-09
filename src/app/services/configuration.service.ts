@@ -23,7 +23,15 @@ export class ConfigurationService {
     return this._http.put(this.url + 'config/update', configurationForm);
   }
 
-  updateFavicon(formData) {
+  updateFavicon(formData): Observable<any> {
     return this._http.post(this.url + 'config/storeimagen/favicon', formData);
+  }
+
+  updateLogo(formData): Observable<any> {
+    return this._http.post(this.url + 'config/storeimagen/logo', formData);
+  }
+
+  updatePortada(formData): Observable<any> {
+    return this._http.post(this.url + 'config/storeimagen/portada', formData);
   }
 }

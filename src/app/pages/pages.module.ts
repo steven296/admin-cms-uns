@@ -13,7 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PagesComponent } from './pages.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { SlidersComponent } from './sliders/sliders.component';
-
+import { UrlimagePipe } from '../pipes/urlimage.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import { SlidersComponent } from './sliders/sliders.component';
     DashboardComponent,
     PagesComponent,
     ConfigurationComponent,
-    SlidersComponent
+    SlidersComponent,
+    UrlimagePipe
   ],
   imports: [
     BrowserModule,
@@ -39,7 +40,8 @@ import { SlidersComponent } from './sliders/sliders.component';
     DashboardComponent,
     PagesComponent,
     ConfigurationComponent,
-    SlidersComponent
+    SlidersComponent,
+    UrlimagePipe
   ]
 })
 export class PagesModule { }
