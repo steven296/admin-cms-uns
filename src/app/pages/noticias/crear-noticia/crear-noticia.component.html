@@ -1,0 +1,73 @@
+<div class="modal-content">
+
+  <form [formGroup]="noticiaForm" (ngSubmit)="crearNoticia()">
+
+    <div class="modal-header modal-colored-header bg-danger">
+      <h3 class="modal-title text-white">Crear Aula</h3>
+      <button type="button" class="close" (click)="cerrarModal()">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <div class="form-group">
+
+        <!--Titulo-->
+        <div class="col-md-12 mb-2">
+
+          <label class="my-1">Titulo</label>
+          <input type="text" class="form-control" placeholder="Titulo"
+                 formControlName="titulo" aria-label="titulo"
+                 [ngClass]="{'is-valid': noticiaForm.get('titulo').valid,
+                 'is-invalid': noticiaForm.get('titulo').invalid && noticiaForm.get('titulo').touched}">
+
+          <div *ngIf="noticiaForm.get('titulo').hasError('required') &&
+                      noticiaForm.get('titulo').touched"
+               class="invalid-feedback">
+            El grado es obligatorio
+          </div>
+
+          <div *ngIf="!noticiaForm.get('titulo').hasError('required') &&
+                       noticiaForm.get('titulo').hasError('pattern')"
+               class="invalid-feedback">
+            El grado no lleva simbolos
+          </div>
+
+        </div>
+        <!--Titulo-->
+
+        <!--Subtitulo-->
+        <div class="col-md-12 mb-2">
+
+          <label class="my-1">Subtitulo</label>
+          <input type="text" class="form-control" placeholder="Subtitulo"
+                 formControlName="subtitulo" aria-label="subtitulo" maxlength="100"
+                 [ngClass]="{'is-valid': noticiaForm.get('subtitulo').valid,
+                 'is-invalid': noticiaForm.get('subtitulo').invalid && noticiaForm.get('subtitulo').touched}">
+
+          <div *ngIf="noticiaForm.get('subtitulo').hasError('required') &&
+                      noticiaForm.get('subtitulo').touched"
+               class="invalid-feedback">
+            El grado es obligatorio
+          </div>
+
+          <div *ngIf="!noticiaForm.get('subtitulo').hasError('required') &&
+                       noticiaForm.get('subtitulo').hasError('pattern')"
+               class="invalid-feedback">
+            El grado no lleva letras ni simbolos
+          </div>
+
+        </div>
+        <!--Subtitulo-->
+
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light float-left" (click)="cerrarModal()">Cerrar</button>
+      <button type="submit" class="btn bg-danger text-white" [disabled]="!noticiaForm.valid">Crear Aula</button>
+    </div>
+
+  </form>
+
+</div>

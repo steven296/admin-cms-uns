@@ -9,6 +9,7 @@ import {AppComponent} from './app.component';
 import {LoginComponent} from './auth/login/login.component';
 import {NotfoundComponent} from './notfound/notfound.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     BrowserModule,
     AppRouting,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

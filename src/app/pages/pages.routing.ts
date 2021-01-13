@@ -5,6 +5,8 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {ConfigurationComponent} from './configuration/configuration.component';
 import {SlidersComponent} from './sliders/sliders.component';
 import {IsLoginGuard} from '../guards/is-login.guard';
+import {NoticiasComponent} from './noticias/noticias.component';
+import {ListaNoticiasComponent} from './noticias/lista-noticias/lista-noticias.component';
 
 const routes: Routes = [
   {
@@ -26,10 +28,17 @@ const routes: Routes = [
     canActivate: [IsLoginGuard]
   },
   {
+    path: 'noticias',
+    component: NoticiasComponent,
+    loadChildren: () => import('./noticias/noticias.module').then(mod => mod.NoticiasModule),
+    data: {title: 'Noticias'},
+    canActivate: [IsLoginGuard]
+  },
+  {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full'
-  },
+  }
 ];
 
 @NgModule({
