@@ -6,7 +6,6 @@ import {ConfigurationComponent} from './configuration/configuration.component';
 import {SlidersComponent} from './sliders/sliders.component';
 import {IsLoginGuard} from '../guards/is-login.guard';
 import {NoticiasComponent} from './noticias/noticias.component';
-import {ListaNoticiasComponent} from './noticias/lista-noticias/lista-noticias.component';
 
 const routes: Routes = [
   {

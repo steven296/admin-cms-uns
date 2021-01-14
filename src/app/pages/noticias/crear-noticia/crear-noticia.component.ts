@@ -1,7 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {NoticiasService} from '../noticias.service';
 import {Noticia} from '../../../models/Noticia';
 
 @Component({
@@ -9,23 +8,19 @@ import {Noticia} from '../../../models/Noticia';
   templateUrl: './crear-noticia.component.html',
   styleUrls: ['./crear-noticia.component.css']
 })
-export class CrearNoticiaComponent implements OnInit {
+export class CrearNoticiaComponent {
 
   noticiaForm: FormGroup;
   noticia: Noticia;
 
   constructor(
     private build: FormBuilder,
-    private ngbActiveModal: NgbActiveModal,
-    private noticiasService: NoticiasService
+    private ngbActiveModal: NgbActiveModal
   ) {
     this.noticiaForm = build.group({
       titulo: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9 ]+')]),
       subtitulo: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9 ]+')]),
     });
-  }
-
-  ngOnInit(): void {
   }
 
   crearNoticia(): void {

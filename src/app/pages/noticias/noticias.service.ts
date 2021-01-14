@@ -29,12 +29,22 @@ export class NoticiasService {
 
   obtenerNoticias(): Observable<Noticia[]> {
     this.refrescarTokenAndHeader();
-    return this.http.get<Noticia[]>(`${this.uri}/list`);
+    return this.http.get<Noticia[]>(`${this.uri}list`);
   }
 
   crearNoticia(noticia: Noticia): Observable<Noticia> {
     this.refrescarTokenAndHeader();
-    return this.http.post<Noticia>(`${this.uri}/register`, noticia);
+    return this.http.post<Noticia>(`${this.uri}register`, noticia);
+  }
+
+  modificarNoticia(noticia: Noticia): Observable<Noticia> {
+    this.refrescarTokenAndHeader();
+    return this.http.put<Noticia>(`${this.uri}update/${noticia._id}`, noticia);
+  }
+
+  eliminarNoticia(id: string): Observable<any> {
+    this.refrescarTokenAndHeader();
+    return this.http.delete<any>(`${this.uri}delete/${id}`);
   }
 
 }
