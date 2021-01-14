@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ export class AuthService {
   private _isLogin: boolean;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) {
 
   }
@@ -19,8 +21,9 @@ export class AuthService {
     return this.http.post(`${this.uri}`, user);
   }
 
-  logout(){
-    console.log("perdiste causa");
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('/login').then();
   }
 
   get isLogin(): boolean {

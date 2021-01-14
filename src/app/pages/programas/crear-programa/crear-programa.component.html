@@ -1,0 +1,49 @@
+<div class="modal-content">
+
+  <form [formGroup]="programaForm" (ngSubmit)="crearNoticia()">
+
+    <div class="modal-header modal-colored-header bg-danger">
+      <h3 class="modal-title text-white">Crear Programa</h3>
+      <button type="button" class="close" (click)="cerrarModal()">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <div class="form-group">
+
+        <!--Titulo-->
+        <div class="col-md-12 mb-2">
+
+          <label class="my-1">Titulo</label>
+          <input type="text" class="form-control" placeholder="Titulo"
+                 formControlName="titulo" aria-label="titulo"
+                 [ngClass]="{'is-valid': programaForm.get('titulo').valid,
+                 'is-invalid': programaForm.get('titulo').invalid && programaForm.get('titulo').touched}">
+
+          <div *ngIf="programaForm.get('titulo').hasError('required') &&
+                      programaForm.get('titulo').touched"
+               class="invalid-feedback">
+            El grado es obligatorio
+          </div>
+
+          <div *ngIf="!programaForm.get('titulo').hasError('required') &&
+                       programaForm.get('titulo').hasError('pattern')"
+               class="invalid-feedback">
+            El grado no lleva simbolos
+          </div>
+
+        </div>
+        <!--Titulo-->
+
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light float-left" (click)="cerrarModal()">Cerrar</button>
+      <button type="submit" class="btn bg-danger text-white" [disabled]="!programaForm.valid">Crear Programa</button>
+    </div>
+
+  </form>
+
+</div>

@@ -1,107 +1,108 @@
 import {Component, OnInit} from '@angular/core';
-import {CrearNoticiaComponent} from './crear-noticia/crear-noticia.component';
+import {CrearProgramaComponent} from './crear-programa/crear-programa.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {NoticiasService} from './noticias.service';
+import {ProgramasService} from './programas.service';
 import {Noticia} from '../../models/Noticia';
 import Swal from 'sweetalert2';
-import {ModificarNoticiaComponent} from './modificar-noticia/modificar-noticia.component';
+import {ModificarProgramaComponent} from './modificar-programa/modificar-programa.component';
 import {ModificarImagenComponent} from './modificar-imagen/modificar-imagen.component';
+import {Programa} from '../../models/Programa';
 
 @Component({
   selector: 'app-noticias',
-  templateUrl: './noticias.component.html',
+  templateUrl: './programas.component.html',
   styleUrls: []
 })
-export class NoticiasComponent implements OnInit {
+export class ProgramasComponent implements OnInit {
 
-  noticias: Noticia[];
+  programas: Programa[];
 
   constructor(
     private ngbModal: NgbModal,
-    private noticiasService: NoticiasService
+    private programasService: ProgramasService
   ) {
   }
 
   ngOnInit(): void {
-    this.obtenerNoticias();
+    this.obtenerProgramas();
   }
 
-  obtenerNoticias(): void {
-    this.noticiasService.obtenerNoticias().subscribe((noticias: Noticia[]) => {
-      this.noticias = noticias;
+  obtenerProgramas(): void {
+    this.programasService.obtenerProgramas().subscribe((programas: Programa[]) => {
+      this.programas = programas;
     });
   }
 
   openCrearNoticia(): void {
-    this.ngbModal.open(CrearNoticiaComponent, {centered: true, size: 'lg', backdrop: 'static'})
+    this.ngbModal.open(CrearProgramaComponent, {centered: true, size: 'lg', backdrop: 'static'})
       .result.then((result) => {
       if (result instanceof Noticia) {
-        this.noticiasService.crearNoticia(result).subscribe((noticia: Noticia) => {
+        this.programasService.crearPrograma(result).subscribe((programa: Programa) => {
           Swal.fire({
             icon: 'success',
-            title: 'Creacion de Noticia Exitosa',
-            text: `Se ha creado la noticia: ${noticia.titulo} de forma correcta.`,
+            title: 'Creacion de Programa Exitoso',
+            text: `Se ha creado el programa: ${programa.titulo} de forma correcta.`,
             width: '40rem',
           }).then(() => {
-            this.obtenerNoticias();
+            this.obtenerProgramas();
           });
         });
       }
     });
   }
 
-  openModificarNoticia(noticia: Noticia): void {
-    const modal = this.ngbModal.open(ModificarNoticiaComponent, {centered: true, size: 'lg', backdrop: 'static'});
-    modal.componentInstance.noticiaPrevia = noticia;
+  openModificarPrograma(programa: Programa): void {
+    const modal = this.ngbModal.open(ModificarProgramaComponent, {centered: true, size: 'lg', backdrop: 'static'});
+    modal.componentInstance.programaPrevio = programa;
     modal.result.then((result) => {
       if (result != undefined || result != null) {
-        this.noticiasService.modificarNoticia(result).subscribe((noticiaM: Noticia) => {
+        this.programasService.modificarNoticia(result).subscribe((programaM: Noticia) => {
           Swal.fire({
             icon: 'success',
-            title: 'Modificacion de Noticia Exitosa',
-            text: `Se ha creado la noticia: ${noticiaM.titulo} de forma correcta.`,
+            title: 'Modificacion de Programa Exitosa',
+            text: `Se ha modificado el programa: ${programaM.titulo} de forma correcta.`,
             width: '40rem',
           }).then(() => {
-            this.obtenerNoticias();
+            this.obtenerProgramas();
           });
         });
       }
     });
   }
 
-  openModificarImagen(noticia: Noticia): void {
+  openModificarImagen(programa: Programa): void {
     const modal = this.ngbModal.open(ModificarImagenComponent, {centered: true, size: 'lg', backdrop: 'static'});
     modal.result.then((result) => {
       if (result != undefined || result != null) {
         let formData: FormData = new FormData();
         formData.append('imagen', result);
 
-        this.noticiasService.modificarNoticiaImagen(noticia._id, formData).subscribe((noticiaM: Noticia) => {
+        this.programasService.modificarProgramaImagen(programa._id, formData).subscribe((programaM: Noticia) => {
           Swal.fire({
             icon: 'success',
             title: 'Modificacion de Imagen',
-            text: `Se ha modificado la imagen de la noticia: ${noticiaM.titulo} de forma correcta.`,
+            text: `Se ha modificado la imagen del programa: ${programaM.titulo} de forma correcta.`,
             width: '40rem',
           }).then(() => {
-            this.obtenerNoticias();
+            this.obtenerProgramas();
           });
         });
       }
     });
   }
 
-  eliminarNoticia(id: string): void {
+  eliminarPrograma(id: string): void {
     Swal.fire({
       icon: 'question',
-      title: '¿Desea eliminar esta noticia?',
+      title: '¿Desea eliminar este Programa?',
       text: 'Confirme la accion en caso contrario puede cancelarla',
       width: '40rem',
       showCancelButton: true,
-      confirmButtonText: 'Eliminar Noticia',
+      confirmButtonText: 'Eliminar Programa',
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.value) {
-        this.noticiasService.eliminarNoticia(id).subscribe(() => {
+        this.programasService.eliminarPrograma(id).subscribe(() => {
           Swal.fire({
             icon: 'success',
             title: 'Eliminacion Exitosa',
@@ -111,7 +112,7 @@ export class NoticiasComponent implements OnInit {
             timer: 2000,
             timerProgressBar: true
           }).then(() => {
-            this.obtenerNoticias();
+            this.obtenerProgramas();
           });
         });
       } else {

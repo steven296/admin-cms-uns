@@ -7,7 +7,7 @@ import {SlidersComponent} from './sliders/sliders.component';
 import {IsLoginGuard} from '../guards/is-login.guard';
 import {NoticiasComponent} from './noticias/noticias.component';
 import {MenusComponent} from './menus/menus.component';
-import {ListaMenusComponent} from './menus/lista-menus/lista-menus.component';
+import {ProgramasComponent} from './programas/programas.component';
 
 const routes: Routes = [
   {
@@ -34,11 +34,19 @@ const routes: Routes = [
     loadChildren: () => import('./noticias/noticias.module').then(mod => mod.NoticiasModule),
     data: {title: 'Noticias'},
     canActivate: [IsLoginGuard]
-  }, {
+  },
+  {
     path: 'menus',
     component: MenusComponent,
     loadChildren: () => import('./menus/menus.module').then(mod => mod.MenusModule),
     data: {title: 'Menus'},
+    canActivate: [IsLoginGuard]
+  },
+  {
+    path: 'programas',
+    component: ProgramasComponent,
+    loadChildren: () => import('./programas/programas.module').then(mod => mod.ProgramasModule),
+    data: {title: 'Programas'},
     canActivate: [IsLoginGuard]
   },
   {
