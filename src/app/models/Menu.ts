@@ -1,7 +1,7 @@
 export class Menu{
   constructor (
-    public titulo: string,
+    public title: string,
     public href: string,
-    public estado: number
+    public status: number
   ){}
 }

@@ -6,13 +6,15 @@ import {MenusComponent} from './menus.component';
 import {RouterModule} from '@angular/router';
 import {MenusRouting} from './menus.routing';
 import {CrearMenuComponent} from './crear-menu/crear-menu.component';
+import { ModificarMenuComponent } from './modificar-menu/modificar-menu.component';
 
 
 @NgModule({
   declarations: [
     MenusComponent,
     ListaMenusComponent,
-    CrearMenuComponent
+    CrearMenuComponent,
+    ModificarMenuComponent
   ],
   imports: [
     CommonModule,

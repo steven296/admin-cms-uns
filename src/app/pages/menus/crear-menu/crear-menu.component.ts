@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {ConfigurationService} from '../../../services/configuration.service';
+import {MenusService} from '../menus.service';
 import {Menu} from '../../../models/Menu';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-crear-menu',
@@ -14,7 +15,7 @@ export class CrearMenuComponent implements OnInit {
 
   constructor(
     private ngbActiveModal: NgbActiveModal,
-    private _configurationService: ConfigurationService
+    private _menusService: MenusService
   ) {
     this.menu = new Menu('', '',  null);
   }
@@ -23,17 +24,17 @@ export class CrearMenuComponent implements OnInit {
   }
 
   crearMenu(menuForm) {
-    this.menu = menuForm.value;
-    this.menu.estado = 1;
-    this.ngbActiveModal.close(this.menu);
-
-    /*
-    this._configurationService.crearMenu(menuForm.value).subscribe(
+    this._menusService.createMenu(menuForm.value).subscribe(
       response => {
-        console.log(response.data);
+        Swal.fire(
+          'Menu Creado con Exito!',
+          'Se ha creado el menu con exito.',
+          'success'
+        );
+        this.menu = response;
         this.ngbActiveModal.close(this.menu);
       }
-    );*/
+    );
   }
 
   cerrarModal(): void {

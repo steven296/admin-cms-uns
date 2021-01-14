@@ -1,3 +1,7 @@
+<div class="float-right my-2 mb-3">
+  <button class="btn btn btn-outline-danger" (click)="openCreateMenu()">Crear Menu</button>
+</div>
+
 <table class="table table-light font-16 lead">
 
   <thead class="bg-danger text-white">
@@ -13,7 +17,7 @@
   <tbody class="font-14">
   <tr *ngFor="let menu of menus, let i=index">
     <td class="text-center">{{ i + 1 }}</td>
-    <td class="text-center">{{ menu.name }}</td>
+    <td class="text-center">{{ menu.title }}</td>
     <td class="text-center">{{ menu.href }}</td>
     <td class="text-center">
       <span class="badge"
@@ -24,8 +28,8 @@
 
     <td>
       <div class="btn-group">
-        <button class="btn btn-outline-info"><i class="fa fa-edit"></i></button>
-        <button class="btn btn-outline-danger"><i class="fa fa-trash"></i></button>
+        <button class="btn btn-outline-info" (click)="openEditMenu(menu)"><i class="fa fa-edit"></i></button>
+        <button class="btn btn-outline-danger" (click)="deleteMenu(menu._id)"><i class="fa fa-trash"></i></button>
       </div>
     </td>
   </tr>

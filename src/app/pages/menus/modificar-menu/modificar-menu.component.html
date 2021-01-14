@@ -1,9 +1,9 @@
 <div class="modal-content">
 
-  <form (ngSubmit)="crearMenu(menuForm)" #menuForm="ngForm">
+  <form #menuForm="ngForm" (ngSubmit)="updateMenu(menuForm)">
 
     <div class="modal-header modal-colored-header bg-danger">
-      <h3 class="modal-title text-white">Crear Menu</h3>
+      <h3 class="modal-title text-white">Modificar Noticia</h3>
       <button type="button" class="close" (click)="cerrarModal()">×</button>
     </div>
 
@@ -29,7 +29,7 @@
 
     <div class="modal-footer">
       <button type="button" class="btn btn-light float-left" (click)="cerrarModal()">Cerrar</button>
-      <button type="submit" class="btn bg-danger text-white">Crear Menu</button>
+      <button type="submit" class="btn bg-danger text-white">Actualizar</button>
     </div>
 
   </form>
