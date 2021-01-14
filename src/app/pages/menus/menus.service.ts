@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Menu } from '../../models/menu';
+import { Menu } from '../../models/Menu';
 import { GLOBAL } from '../../services/GLOBAL';
 
 @Injectable({

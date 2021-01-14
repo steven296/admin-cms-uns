@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {MenusService} from '../menus.service';
-import { Menu } from '../../../models/menu';
+import { Menu } from '../../../models/Menu';
 import {CrearMenuComponent} from '../crear-menu/crear-menu.component';
 import {ModificarMenuComponent} from '../modificar-menu/modificar-menu.component';
 import Swal from 'sweetalert2';
