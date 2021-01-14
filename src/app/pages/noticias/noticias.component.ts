@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-noticias',
   templateUrl: './noticias.component.html',
-  styleUrls: ['./noticias.component.css']
+  styleUrls: []
 })
 export class NoticiasComponent implements OnInit {
 

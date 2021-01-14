@@ -1,0 +1,33 @@
+<table class="table table-light font-16 lead">
+
+  <thead class="bg-danger text-white">
+  <tr>
+    <th class="text-center">#</th>
+    <th class="text-center">Titulo</th>
+    <th class="text-center">href</th>
+    <th class="text-center">Estado</th>
+    <th class="text-center">Opciones</th>
+  </tr>
+  </thead>
+
+  <tbody class="font-14">
+  <tr *ngFor="let menu of menus, let i=index">
+    <td class="text-center">{{ i + 1 }}</td>
+    <td class="text-center">{{ menu.name }}</td>
+    <td class="text-center">{{ menu.href }}</td>
+    <td class="text-center">
+      <span class="badge"
+            [ngClass]="{'badge-success':menu.status===1,'badge-danger':menu.status!==1}">
+        {{menu.status === 1 ? 'Disponible' : 'No Disponible'}}
+      </span>
+    </td>
+
+    <td>
+      <div class="btn-group">
+        <button class="btn btn-outline-info"><i class="fa fa-edit"></i></button>
+        <button class="btn btn-outline-danger"><i class="fa fa-trash"></i></button>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>

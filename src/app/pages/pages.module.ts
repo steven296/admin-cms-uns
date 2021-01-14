@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 import {RouterModule} from '@angular/router';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 
 import {SidebarComponent} from './shared/sidebar/sidebar.component';
@@ -32,7 +32,8 @@ import {PagesRouting} from './pages.routing';
     PagesRouting,
     FormsModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule 
   ],
   exports: [
     SidebarComponent,
