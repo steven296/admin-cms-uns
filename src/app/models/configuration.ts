@@ -3,6 +3,8 @@ export class Configuration{
     public _id: number,
     public favicon: any,
     public logo: any,
+    public menu: any[],
+    public secciones: string[],
     public colormenu: string,
     public backgroundmenu: string,
     public portada: any,
@@ -14,6 +16,6 @@ export class Configuration{
     public facebook: string,
     public instagram: string,
     public twitter: string,
-    public actived: number
+    public actived: number,
   ){}
 }

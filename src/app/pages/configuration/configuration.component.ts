@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ConfigurationService} from '../../services/configuration.service';
 import {Configuration} from '../../models/configuration';
 import {AuthService} from "../../auth/auth.service";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-configuration',
@@ -14,12 +15,16 @@ export class ConfigurationComponent implements OnInit {
   public uploadedFavicon: File;
   public uploadedLogo: File;
   public uploadedPortada: File;
+  public sections: string[];
+  public faviconTemp: String | ArrayBuffer;
+  public logoTemp: String | ArrayBuffer;
+  public portadaTemp: String | ArrayBuffer;
 
   constructor(
     private _configurationService: ConfigurationService,
     private authService: AuthService
   ) {
-    this.configuration = new Configuration(null, null, null, '', '', null, '', '', '', '', '', '', '', '', null);
+    this.configuration = new Configuration(null, null, null, null, null, '', '', null, '', '', '', '', '', '', '', '', null);
     this.getConfiguration();
   }
 
@@ -30,6 +35,11 @@ export class ConfigurationComponent implements OnInit {
     this._configurationService.updateConfiguration(configurationForm.value).subscribe(
       response => {
         console.log(response);
+        Swal.fire(
+          'Exito!',
+          'La configuracion se actualizo correctamente!',
+          'success'
+        );
       }
     )
   }
@@ -38,6 +48,7 @@ export class ConfigurationComponent implements OnInit {
     this._configurationService.getConfiguration().subscribe(
       response => {
         this.configuration = response;
+        this.sections = this.configuration.secciones;
       }
     );
   }
@@ -50,8 +61,15 @@ export class ConfigurationComponent implements OnInit {
     }
   }
 
+  /*
+  * Favicon Imagen
+  */
   onFaviconChange(event) {
     this.uploadedFavicon = event.target.files[0];
+
+    let reader = new FileReader();
+    reader.readAsDataURL(this.uploadedFavicon);
+    reader.onloadend = () => this.faviconTemp= reader.result;
   }
 
   onFaviconSubmit() {
@@ -60,13 +78,24 @@ export class ConfigurationComponent implements OnInit {
 
     this._configurationService.updateFavicon(formData).subscribe(
       response => {
-        this.configuration.favicon = response.favicon;
+        Swal.fire(
+          'Exito!',
+          'Se actualizo el Favicon correctamente!',
+          'success'
+        );
       }
     );
   }
 
+  /*
+  * Logo Imagen
+  */
   onLogoChange(event) {
     this.uploadedLogo = event.target.files[0];
+
+    let reader = new FileReader();
+    reader.readAsDataURL(this.uploadedLogo);
+    reader.onloadend = () => this.logoTemp= reader.result;
   }
 
   onLogoSubmit() {
@@ -75,13 +104,24 @@ export class ConfigurationComponent implements OnInit {
 
     this._configurationService.updateLogo(formData).subscribe(
       response => {
-        this.configuration.logo = response.logo;
+        Swal.fire(
+          'Exito!',
+          'Se actualizo el Logo correctamente!',
+          'success'
+        );
       }
     );
   }
 
+  /*
+  * Portada Imagen
+  */
   onPortadaChange(event) {
-    this.uploadedPortada = event.target.files[0];
+      this.uploadedPortada = event.target.files[0];
+
+      let reader = new FileReader();
+      reader.readAsDataURL(this.uploadedPortada);
+      reader.onloadend = () => this.portadaTemp= reader.result;
   }
 
   onPortadaSubmit() {
@@ -90,8 +130,24 @@ export class ConfigurationComponent implements OnInit {
 
     this._configurationService.updatePortada(formData).subscribe(
       response => {
-        this.configuration.portada = response.portada;
+        Swal.fire(
+          'Exito!',
+          'Se actualizo la Portada correctamente!',
+          'success'
+        );
       }
     );
+  }
+
+  /*
+  * CHECKBOX DE SERVICIOS
+  */
+  changeSeccion(seccion) {
+    if (this.sections.includes(seccion)) {
+      var i = this.sections.indexOf(seccion);
+      this.sections.splice(i,1);
+    } else {
+      this.sections.push(seccion);
+    }
   }
 }

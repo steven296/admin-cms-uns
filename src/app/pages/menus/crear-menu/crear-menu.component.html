@@ -1,0 +1,37 @@
+<div class="modal-content">
+
+  <form (ngSubmit)="crearMenu(menuForm)" #menuForm="ngForm">
+
+    <div class="modal-header modal-colored-header bg-danger">
+      <h3 class="modal-title text-white">Crear Menu</h3>
+      <button type="button" class="close" (click)="cerrarModal()">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <div class="form-group">
+
+        <div class="col-md-12 mb-2">
+
+          <label class="my-1">Titulo</label>
+          <input type="text" class="form-control" placeholder="Titulo" name="titulo" #titulo="ngModel" [(ngModel)]="menu.titulo">
+        </div>
+
+        <div class="col-md-12 mb-2">
+
+          <label class="my-1">href</label>
+          <input type="text" class="form-control" placeholder="href" name="href" #href="ngModel" [(ngModel)]="menu.href" maxlength="100">
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light float-left" (click)="cerrarModal()">Cerrar</button>
+      <button type="submit" class="btn bg-danger text-white">Crear Aula</button>
+    </div>
+
+  </form>
+
+</div>

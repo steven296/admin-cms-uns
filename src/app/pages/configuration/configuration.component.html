@@ -84,6 +84,19 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                          <label class="control-label text-right col-md-3">Secciones</label>
+                          <input type="text" class="form-control"  name="secciones" #secciones="ngModel" [(ngModel)]="sections" hidden>
+                          <div class="col-md-9 demo-checkbox">
+                            <input type="checkbox" id="md_checkbox_1" class="chk-col-red" [checked]="sections != null && sections.includes('NOTICIAS')" (change)="changeSeccion('NOTICIAS')"/>
+                            <label for="md_checkbox_1">NOTICIAS</label>
+                            <input type="checkbox" id="md_checkbox_2" class="chk-col-red" [checked]="sections != null && sections.includes('PORTAL')"  (change)="changeSeccion('PORTAL')"/>
+                            <label for="md_checkbox_2">PORTAL</label>
+                            <input type="checkbox" id="md_checkbox_3" class="chk-col-red" [checked]="sections != null && sections.includes('EVENTOS')"  (change)="changeSeccion('EVENTOS')"/>
+                            <label for="md_checkbox_3">EVENTOS</label>
+                          </div>
+                        </div>
+
                     </div>
                     <div class="form-actions">
                         <div class="row">
@@ -111,7 +124,7 @@
                 </div>
                 <div class="card-body">
                     <div class="preview-img">
-                      <img [src]="configuration.favicon | urlimage:'favicon'" alt="favicon" height="30">
+                      <img [src]="faviconTemp || (configuration.favicon | urlimage:'favicon')" alt="favicon" height="30">
                     </div>
 
                     <div class="mb-4">
@@ -132,7 +145,7 @@
               </div>
                 <div class="card-body">
                     <div class="preview-img">
-                      <img [src]="configuration.logo | urlimage:'logo'" alt="logo" height="80">
+                      <img [src]="logoTemp || (configuration.logo | urlimage:'logo')" alt="logo" height="80">
                     </div>
 
                     <div class="mb-4">
@@ -153,7 +166,7 @@
               </div>
                 <div class="card-body">
                     <div class="preview-img">
-                      <img [src]="configuration.portada | urlimage:'portada'" alt="logo" width="100%">
+                      <img [src]="portadaTemp || (configuration.portada | urlimage:'portada')" alt="logo" width="90%">
                     </div>
 
                     <div class="mb-4">
