@@ -10,6 +10,8 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 export class ModificarImagenComponent implements OnInit {
 
   noticiaForm: FormGroup;
+  private actualizarImagen: File;
+  imagenTemporal: string | ArrayBuffer;
 
   constructor(
     private ngbActiveModal: NgbActiveModal,
@@ -24,11 +26,20 @@ export class ModificarImagenComponent implements OnInit {
   }
 
   modificarNoticia(): void {
-    this.ngbActiveModal.close(this.noticiaForm);
+    this.ngbActiveModal.close(this.actualizarImagen);
   }
 
   cerrarModal(): void {
     this.ngbActiveModal.close();
   }
+
+  modificarImagenNoticia($event: Event): void {
+    this.actualizarImagen = $event.target['files'][0];
+
+    let reader = new FileReader();
+    reader.readAsDataURL(this.actualizarImagen);
+    reader.onloadend = () => this.imagenTemporal = reader.result;
+  }
+
 
 }

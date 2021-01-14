@@ -19,6 +19,10 @@ export class AuthService {
     return this.http.post(`${this.uri}`, user);
   }
 
+  logout(){
+    console.log("perdiste causa");
+  }
+
   get isLogin(): boolean {
     if (localStorage.getItem('token')) {
       this._isLogin = true;

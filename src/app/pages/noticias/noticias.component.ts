@@ -69,19 +69,24 @@ export class NoticiasComponent implements OnInit {
   }
 
   openModificarImagen(noticia: Noticia): void {
-    const modal = this.ngbModal.open(ModificarImagenComponent, {centered: true, size: 'md'});
+    const modal = this.ngbModal.open(ModificarImagenComponent, {centered: true, size: 'lg'});
     modal.result.then((result) => {
-      console.log(result);
-      // this.noticiasService.modificarNoticia(result).subscribe((noticiaM: Noticia) => {
-      //   Swal.fire({
-      //     icon: 'success',
-      //     title: 'Modificacion de Noticia Exitosa',
-      //     text: `Se ha creado la noticia: ${noticiaM.titulo} de forma correcta.`,
-      //     width: '40rem',
-      //   }).then(() => {
-      //     this.obtenerNoticias();
-      //   });
-      // });
+
+      let formData: FormData = new FormData();
+      formData.append('imagen', result);
+
+      console.log(formData.get('imagen'));
+
+      this.noticiasService.modificarNoticiaImagen(noticia._id, formData).subscribe((noticiaM: Noticia) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Modificacion de Imagen',
+          text: `Se ha modificado la imagen de la noticia: ${noticiaM.titulo} de forma correcta.`,
+          width: '40rem',
+        }).then(() => {
+          this.obtenerNoticias();
+        });
+      });
     });
   }
 

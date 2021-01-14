@@ -42,6 +42,11 @@ export class NoticiasService {
     return this.http.put<Noticia>(`${this.uri}update/${noticia._id}`, noticia);
   }
 
+  modificarNoticiaImagen(id: string, data: FormData): Observable<Noticia> {
+    this.refrescarTokenAndHeader();
+    return this.http.post<Noticia>(`${this.uri}storeimagen/${id}`, data);
+  }
+
   eliminarNoticia(id: string): Observable<any> {
     this.refrescarTokenAndHeader();
     return this.http.delete<any>(`${this.uri}delete/${id}`);
