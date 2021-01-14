@@ -34,6 +34,12 @@ const routes: Routes = [
     loadChildren: () => import('./noticias/noticias.module').then(mod => mod.NoticiasModule),
     data: {title: 'Noticias'},
     canActivate: [IsLoginGuard]
+  }, {
+    path: 'menus',
+    component: MenusComponent,
+    loadChildren: () => import('./menus/menus.module').then(mod => mod.MenusModule),
+    data: {title: 'Menus'},
+    canActivate: [IsLoginGuard]
   },
   {
     path: '',
