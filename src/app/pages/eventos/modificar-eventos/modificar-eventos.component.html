@@ -26,7 +26,8 @@
         <div class="col-md-12 mb-2">
 
           <label class="my-1">Descripcion</label>
-          <input type="text" class="form-control" placeholder="descripcion" name="descripcion" #descripcion="ngModel" [(ngModel)]="evento.descripcion" maxlength="100">
+          <editor [apiKey]="apiKey" name="descripcion" #descripcion="ngModel" [(ngModel)]="evento.descripcion"></editor>
+
         </div>
 
       </div>

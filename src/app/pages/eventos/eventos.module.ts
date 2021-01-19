@@ -7,7 +7,7 @@ import { EventosComponent } from './eventos.component';
 import { ListaEventosComponent } from './lista-eventos/lista-eventos.component';
 import { CrearEventosComponent } from './crear-eventos/crear-eventos.component';
 import { ModificarEventosComponent } from './modificar-eventos/modificar-eventos.component';
-
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import { ModificarEventosComponent } from './modificar-eventos/modificar-eventos
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    EventosRouting
+    EventosRouting,
+    EditorModule
   ]
 })
 export class EventosModule { }

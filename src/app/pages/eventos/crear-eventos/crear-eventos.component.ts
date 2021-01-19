@@ -3,6 +3,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { EventosService } from '../eventos.service';
 import { Evento } from '../../../models/Evento';
 import Swal from 'sweetalert2';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-crear-eventos',
@@ -13,11 +14,10 @@ import Swal from 'sweetalert2';
 export class CrearEventosComponent implements OnInit {
 
   public evento: Evento;
+  public apiKey: string;
 
-  constructor(
-    private ngbActiveModal: NgbActiveModal,
-    private _eventosService: EventosService
-  ) {
+  constructor(private ngbActiveModal: NgbActiveModal, private _eventosService: EventosService) {
+    this.apiKey = environment.tinykey;
     this.evento = new Evento();
   }
 
