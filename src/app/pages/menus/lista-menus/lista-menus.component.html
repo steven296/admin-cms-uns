@@ -29,7 +29,16 @@
     <td>
       <div class="btn-group">
         <button class="btn btn-outline-info" (click)="openEditMenu(menu)"><i class="fa fa-edit"></i></button>
-        <button class="btn btn-outline-danger" (click)="deleteMenu(menu._id)"><i class="fa fa-trash"></i></button>
+        <button class="btn btn-outline-danger ml-1" (click)="deleteMenu(menu._id)"><i class="fa fa-trash"></i></button>
+
+
+        <button
+          class="btn ml-1" 
+          [ngClass]="{'btn-outline-danger':menu.status===1,'btn-outline-success':menu.status!==1}"
+          (click)="updateStatusMenu(menu)"
+        >
+          <i class="fa" [ngClass]="{'fa-times':menu.status===1,'fa-check':menu.status!==1}"></i>
+        </button>
       </div>
     </td>
   </tr>

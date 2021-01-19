@@ -85,4 +85,12 @@ export class ListaMenusComponent implements OnInit {
         //this.menus.push(result);
     });
   }
+
+  updateStatusMenu(menu): void {
+    this._menusService.updateStatusMenu(menu.status, menu._id).subscribe(
+      response => {
+        this.getMenus();
+      }
+    );
+  }
 }

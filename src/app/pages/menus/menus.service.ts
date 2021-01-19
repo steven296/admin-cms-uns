@@ -34,4 +34,10 @@ export class MenusService {
   deleteMenu(idMenu: number): Observable<any> {
     return this._http.delete(this.url + 'menu/delete/'+idMenu);
   }
+
+  updateStatusMenu(oldStatus: number, idMenu: number): Observable<any> {
+
+    let status = (oldStatus == 1) ? 0 : 1;
+    return this._http.put(this.url + 'menu/update/'+idMenu, {status});
+  }
 }
