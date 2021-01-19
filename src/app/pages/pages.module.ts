@@ -33,7 +33,7 @@ import {PagesRouting} from './pages.routing';
     FormsModule,
     RouterModule,
     HttpClientModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule
   ],
   exports: [
     SidebarComponent,

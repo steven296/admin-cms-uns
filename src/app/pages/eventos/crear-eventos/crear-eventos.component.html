@@ -1,0 +1,43 @@
+<div class="modal-content">
+
+  <form (ngSubmit)="crearEvento(eventoForm)" #eventoForm="ngForm">
+
+    <div class="modal-header modal-colored-header bg-danger">
+      <h3 class="modal-title text-white">Crear Evento</h3>
+      <button type="button" class="close" (click)="cerrarModal()">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <div class="form-group">
+
+        <div class="col-md-12 mb-2">
+
+          <label class="my-1">Titulo</label>
+          <input type="text" class="form-control" placeholder="Titulo" name="titulo" #titulo="ngModel" [(ngModel)]="evento.titulo">
+        </div>
+
+        <div class="col-md-12 mb-2">
+
+          <label class="my-1">URL</label>
+          <input type="text" class="form-control" placeholder="url" name="url" #href="ngModel" [(ngModel)]="evento.url" maxlength="100">
+        </div>
+
+        <div class="col-md-12 mb-2">
+
+          <label class="my-1">Descripcion</label>
+          <input type="text" class="form-control" placeholder="descripcion" name="descripcion" #descripcion="ngModel" [(ngModel)]="evento.descripcion" maxlength="100">
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light float-left" (click)="cerrarModal()">Cerrar</button>
+      <button type="submit" class="btn bg-danger text-white">Crear Evento</button>
+    </div>
+
+  </form>
+
+</div>

@@ -8,6 +8,7 @@ import {IsLoginGuard} from '../guards/is-login.guard';
 import {NoticiasComponent} from './noticias/noticias.component';
 import {MenusComponent} from './menus/menus.component';
 import {ProgramasComponent} from './programas/programas.component';
+import {EventosComponent} from './eventos/eventos.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,13 @@ const routes: Routes = [
     component: ProgramasComponent,
     loadChildren: () => import('./programas/programas.module').then(mod => mod.ProgramasModule),
     data: {title: 'Programas'},
+    canActivate: [IsLoginGuard]
+  },
+  {
+    path: 'eventos',
+    component: EventosComponent,
+    loadChildren: () => import('./eventos/eventos.module').then(mod => mod.EventosModule),
+    data: {title: 'Eventos'},
     canActivate: [IsLoginGuard]
   },
   {
