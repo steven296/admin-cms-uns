@@ -15,28 +15,28 @@ export class MenusService {
     this.url = GLOBAL.url;
   }
 
-  getMenu(id: number): Observable<any> {
-    return this._http.get(this.url + 'menu/show/' + id);
+  getMenu(id: number): Observable<Menu> {
+    return this._http.get<Menu>(this.url + 'menu/show/' + id);
   }
 
-  getMenus(): Observable<any> {
-    return this._http.get(this.url + 'menu/list');
+  getMenus(): Observable<Menu[]> {
+    return this._http.get<Menu[]>(this.url + 'menu/list');
   }
 
-  createMenu(menuForm: Menu): Observable<any> {
-    return this._http.post(this.url + 'menu/register', menuForm);
+  createMenu(menuForm: Menu): Observable<Menu> {
+    return this._http.post<Menu>(this.url + 'menu/register', menuForm);
   }
 
-  updateMenu(menuForm: Menu, idMenu: number): Observable<any> {
-    return this._http.put(this.url + 'menu/update/'+idMenu, menuForm);
+  updateMenu(menuForm: Menu, idMenu: number): Observable<Menu> {
+    return this._http.put<Menu>(this.url + 'menu/update/'+idMenu, menuForm);
   }
 
-  deleteMenu(idMenu: number): Observable<any> {
-    return this._http.delete(this.url + 'menu/delete/'+idMenu);
+  deleteMenu(idMenu: number): Observable<Menu> {
+    return this._http.delete<Menu>(this.url + 'menu/delete/'+idMenu);
   }
 
-  updateStatusMenu(oldStatus: number, idMenu: number): Observable<any> {
+  updateStatusMenu(oldStatus: number, idMenu: number): Observable<Menu> {
     let status = (oldStatus == 1) ? 0 : 1;
-    return this._http.put(this.url + 'menu/update/'+idMenu, {status});
+    return this._http.put<Menu>(this.url + 'menu/update/'+idMenu, {status});
   }
 }

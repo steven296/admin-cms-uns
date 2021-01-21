@@ -129,4 +129,11 @@ export class ProgramasComponent implements OnInit {
     });
 
   }
+
+  updateStatusPrograma(programa: Programa): void {
+    this.programasService.updateStatusPrograma(programa.estado, programa._id).subscribe(
+      () => {
+        this.obtenerProgramas();
+      });
+  }
 }

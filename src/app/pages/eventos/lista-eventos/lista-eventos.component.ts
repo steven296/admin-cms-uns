@@ -106,4 +106,12 @@ export class ListaEventosComponent implements OnInit {
       }
     });
   }
+
+  updateStatusEvento(evento: Evento): void {
+    this._eventosService.updateStatusEvento(evento.estado, evento._id).subscribe(
+      response => {
+        this.getEventos();
+      }
+    );
+  }
 }

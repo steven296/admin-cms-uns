@@ -53,4 +53,8 @@ export class ProgramasService {
     return this.http.delete<any>(`${this.uri}delete/${id}`);
   }
 
+  updateStatusPrograma(oldStatus: number, idPrograma: string): Observable<Programa> {
+    let estado = (oldStatus == 1) ? 0 : 1;
+    return this.http.put<Programa>(`${this.uri}update/${idPrograma}`, {estado});
+  }
 }

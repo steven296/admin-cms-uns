@@ -33,6 +33,13 @@
         <button class="btn btn-outline-info" (click)="openEditEvento(evento)"><i class="fa fa-edit"></i></button>
         <button class="btn btn-outline-success" (click)="openModificarImagen(evento)"><i class="fa fa-image"></i></button>
         <button class="btn btn-outline-danger" (click)="deleteEvento(evento._id)"><i class="fa fa-trash"></i></button>
+
+        <button
+          class="btn ml-1"
+          [ngClass]="{'btn-outline-danger':evento.estado===1,'btn-outline-success':evento.estado!==1}"
+          (click)="updateStatusEvento(evento)">
+          <i class="fa" [ngClass]="{'fa-times':evento.estado===1,'fa-check':evento.estado!==1}"></i>
+        </button>
       </div>
     </td>
   </tr>

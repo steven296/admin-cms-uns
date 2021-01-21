@@ -16,27 +16,32 @@ export class EventosService {
     this.url = GLOBAL.url;
   }
 
-  getEvento(id: number): Observable<any> {
-    return this._http.get(this.url + 'evento/show/' + id);
+  getEvento(id: number): Observable<Evento> {
+    return this._http.get<Evento>(this.url + 'evento/show/' + id);
   }
 
-  getEventos(): Observable<any> {
-    return this._http.get(this.url + 'evento/list');
+  getEventos(): Observable<Evento[]> {
+    return this._http.get<Evento[]>(this.url + 'evento/list');
   }
 
-  createEvento(eventoForm: Evento): Observable<any> {
-    return this._http.post(this.url + 'evento/register', eventoForm);
+  createEvento(eventoForm: Evento): Observable<Evento> {
+    return this._http.post<Evento>(this.url + 'evento/register', eventoForm);
   }
 
-  updateEvento(eventoForm: Evento, idEvento: string): Observable<any> {
-    return this._http.put(this.url + 'evento/update/'+idEvento, eventoForm);
+  updateEvento(eventoForm: Evento, idEvento: string): Observable<Evento> {
+    return this._http.put<Evento>(this.url + 'evento/update/'+idEvento, eventoForm);
   }
 
-  deleteEvento(idEvento: number): Observable<any> {
-    return this._http.delete(this.url + 'evento/delete/'+idEvento);
+  deleteEvento(idEvento: number): Observable<Evento> {
+    return this._http.delete<Evento>(this.url + 'evento/delete/'+idEvento);
   }
 
   modificarEventoImagen(id: string, data: FormData): Observable<Evento> {
     return this._http.post<Evento>(`${this.url}evento/storeimagen/${id}`, data);
+  }
+
+  updateStatusEvento(oldStatus: number, idEvento: string): Observable<Evento> {
+    let estado = (oldStatus == 1) ? 0 : 1;
+    return this._http.put<Evento>(this.url + 'evento/update/'+idEvento, {estado});
   }
 }
