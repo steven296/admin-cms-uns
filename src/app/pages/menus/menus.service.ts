@@ -36,7 +36,6 @@ export class MenusService {
   }
 
   updateStatusMenu(oldStatus: number, idMenu: number): Observable<any> {
-
     let status = (oldStatus == 1) ? 0 : 1;
     return this._http.put(this.url + 'menu/update/'+idMenu, {status});
   }

@@ -36,8 +36,12 @@
             <button class="btn btn-outline-info" (click)="openModificarNoticia(noticia)">
               <i class="fa fa-edit"></i>
             </button>
-            <button class="btn btn-outline-success"(click)="openModificarImagen(noticia)">
+            <button class="btn btn-outline-success" (click)="openModificarImagen(noticia)">
               <i class="fa fa-image"></i>
+            </button>
+            <button [ngClass]="{'btn-outline-warning':noticia.estado===1,'btn-outline-secondary':noticia.estado!==1}"
+                    class="btn" (click)="updateStatusNoticia(noticia)">
+              <i class="fa" [ngClass]="{'fa-times':noticia.estado===1,'fa-check':noticia.estado!==1}"></i>
             </button>
             <button class="btn btn-outline-danger" (click)="eliminarNoticia(noticia._id)">
               <i class="fa fa-trash"></i>
@@ -45,6 +49,7 @@
           </div>
         </td>
       </tr>
+
       </tbody>
     </table>
 

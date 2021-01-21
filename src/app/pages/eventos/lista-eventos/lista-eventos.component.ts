@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { EventosService } from '../eventos.service';
-import { Evento } from '../../../models/Evento';
+import {Component, OnInit} from '@angular/core';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {EventosService} from '../eventos.service';
+import {Evento} from '../../../models/Evento';
 import Swal from 'sweetalert2';
-import { CrearEventosComponent } from '../crear-eventos/crear-eventos.component';
-import { ModificarEventosComponent } from '../modificar-eventos/modificar-eventos.component';
+import {CrearEventosComponent} from '../crear-eventos/crear-eventos.component';
+import {ModificarEventosComponent} from '../modificar-eventos/modificar-eventos.component';
+import {ModificarImagenComponent} from '../../noticias/modificar-imagen/modificar-imagen.component';
+import {Noticia} from '../../../models/Noticia';
 
 @Component({
   selector: 'app-lista-eventos',
   templateUrl: './lista-eventos.component.html',
-  styles: [
-  ]
+  styles: []
 })
 export class ListaEventosComponent implements OnInit {
 
@@ -34,7 +35,7 @@ export class ListaEventosComponent implements OnInit {
   openCreateEvento(): void {
     this.ngbModal.open(CrearEventosComponent, {centered: true, size: 'md'})
       .result.then((result) => {
-        this.getEventos();
+      this.getEventos();
     });
   }
 
@@ -77,11 +78,32 @@ export class ListaEventosComponent implements OnInit {
   }
 
   openEditEvento(evento): void {
-    const modal = this.ngbModal.open(ModificarEventosComponent, {centered: true, size: 'md'})
+    const modal = this.ngbModal.open(ModificarEventosComponent, {centered: true, size: 'md'});
     modal.componentInstance.evento = evento;
     modal.componentInstance.id = evento._id;
     modal.result.then((result) => {
-        this.getEventos();
+      this.getEventos();
+    });
+  }
+
+  openModificarImagen(evento: Evento) {
+    const modal = this.ngbModal.open(ModificarImagenComponent, {centered: true, size: 'lg', backdrop: 'static'});
+    modal.result.then((result) => {
+      if (result != undefined || result != null) {
+        let formData: FormData = new FormData();
+        formData.append('imagen', result);
+
+        this._eventosService.modificarEventoImagen(evento._id, formData).subscribe((eventoR: Evento) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Modificacion de Imagen',
+            text: `Se ha modificado la imagen de la noticia: ${eventoR.titulo} de forma correcta.`,
+            width: '40rem',
+          }).then(() => {
+            this.getEventos();
+          });
+        });
+      }
     });
   }
 }

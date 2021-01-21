@@ -8,13 +8,15 @@ import { ListaEventosComponent } from './lista-eventos/lista-eventos.component';
 import { CrearEventosComponent } from './crear-eventos/crear-eventos.component';
 import { ModificarEventosComponent } from './modificar-eventos/modificar-eventos.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
+import {ModificarImagenComponent} from './modificar-imagen/modificar-imagen.component';
 
 @NgModule({
   declarations: [
     EventosComponent,
     ListaEventosComponent,
     CrearEventosComponent,
-    ModificarEventosComponent
+    ModificarEventosComponent,
+    ModificarImagenComponent
   ],
   imports: [
     CommonModule,

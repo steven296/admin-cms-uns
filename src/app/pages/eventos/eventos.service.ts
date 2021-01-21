@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Evento } from '../../models/Evento';
 import { GLOBAL } from '../../services/GLOBAL';
+import {Noticia} from '../../models/Noticia';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventosService {
 
-  private url;
+  private readonly url;
 
   constructor(private _http: HttpClient) {
     this.url = GLOBAL.url;
@@ -33,5 +34,9 @@ export class EventosService {
 
   deleteEvento(idEvento: number): Observable<any> {
     return this._http.delete(this.url + 'evento/delete/'+idEvento);
+  }
+
+  modificarEventoImagen(id: string, data: FormData): Observable<Evento> {
+    return this._http.post<Evento>(`${this.url}evento/storeimagen/${id}`, data);
   }
 }

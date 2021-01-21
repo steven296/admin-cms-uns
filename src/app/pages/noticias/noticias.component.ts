@@ -128,4 +128,11 @@ export class NoticiasComponent implements OnInit {
     });
 
   }
+
+  updateStatusNoticia(noticia: Noticia): void {
+    this.noticiasService.updateStatusMenu(noticia.estado, noticia._id).subscribe(
+      () => {
+        this.obtenerNoticias();
+      });
+  }
 }

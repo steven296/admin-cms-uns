@@ -52,4 +52,9 @@ export class NoticiasService {
     return this.http.delete<any>(`${this.uri}delete/${id}`);
   }
 
+  updateStatusMenu(oldStatus: number, idNoticia: string): Observable<any> {
+    let estado = (oldStatus == 1) ? 0 : 1;
+    return this.http.put(`${this.uri}update/${idNoticia}`, {estado});
+  }
+
 }

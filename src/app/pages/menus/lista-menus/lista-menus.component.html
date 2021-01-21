@@ -33,10 +33,9 @@
 
 
         <button
-          class="btn ml-1" 
+          class="btn ml-1"
           [ngClass]="{'btn-outline-danger':menu.status===1,'btn-outline-success':menu.status!==1}"
-          (click)="updateStatusMenu(menu)"
-        >
+          (click)="updateStatusMenu(menu)">
           <i class="fa" [ngClass]="{'fa-times':menu.status===1,'fa-check':menu.status!==1}"></i>
         </button>
       </div>

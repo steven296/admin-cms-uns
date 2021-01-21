@@ -1,0 +1,41 @@
+<div class="modal-content">
+
+  <form [formGroup]="noticiaForm" (ngSubmit)="modificarNoticia()">
+
+    <div class="modal-header modal-colored-header bg-danger">
+      <h3 class="modal-title text-white">Modificar Imagen</h3>
+      <button type="button" class="close" (click)="cerrarModal()">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <div class="form-group">
+
+        <!--Titulo-->
+        <div class="col-md-12 mb-2">
+
+          <label class="my-1">Imagen</label>
+          <input type="file" class="form-control" placeholder="Titulo"
+                 formControlName="imagen" aria-label="titulo"
+                 [ngClass]="{'is-valid': noticiaForm.get('imagen').valid,
+                 'is-invalid': noticiaForm.get('imagen').invalid && noticiaForm.get('imagen').touched}"
+                 (change)="modificarImagenNoticia($event)">
+
+        </div>
+        <!--Titulo-->
+      </div>
+
+      <div *ngIf="noticiaForm.get('imagen').value && imagenTemporal" class="img-thumbnail" style="width: 100%">
+        <img [src]="imagenTemporal" class="img-thumbnail" alt="Imagen Temporal" style="width: 100%">
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light float-left" (click)="cerrarModal()">Cerrar</button>
+      <button type="submit" class="btn bg-danger text-white" [disabled]="!noticiaForm.valid">Modificar Imagen</button>
+    </div>
+
+  </form>
+
+</div>
