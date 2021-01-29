@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import {ConfigurationService} from '../../services/configuration.service';
 import {Configuration} from '../../models/configuration';
 import {AuthService} from "../../auth/auth.service";
@@ -19,6 +19,8 @@ export class ConfigurationComponent implements OnInit {
   public faviconTemp: String | ArrayBuffer;
   public logoTemp: String | ArrayBuffer;
   public portadaTemp: String | ArrayBuffer;
+
+  @ViewChild('fileInput', {static: false}) myFileInput: ElementRef;
 
   constructor(
     private _configurationService: ConfigurationService,
@@ -120,8 +122,30 @@ export class ConfigurationComponent implements OnInit {
       this.uploadedPortada = event.target.files[0];
 
       let reader = new FileReader();
+      const max_height = 800;
+      const max_width = 256;
+      reader.onload = (e: any) => {
+            const image = new Image();
+            image.src = e.target.result;
+            image.onload = rs => {
+                const img_height = rs.currentTarget['height'];
+                const img_width = rs.currentTarget['width'];
+
+                if (img_height > max_height && img_width > max_width) {
+                  Swal.fire(
+                    'Error!',
+                    'la dimension maxima permitida es: ' + max_height + '*' + max_width + 'px',
+                    'error'
+                  );
+                  this.myFileInput.nativeElement.value = '';
+                  this.uploadedPortada = null;
+                  return false;
+                } else {
+                  this.portadaTemp= reader.result;
+                }
+            };
+      };
       reader.readAsDataURL(this.uploadedPortada);
-      reader.onloadend = () => this.portadaTemp= reader.result;
   }
 
   onPortadaSubmit() {
@@ -135,6 +159,8 @@ export class ConfigurationComponent implements OnInit {
           'Se actualizo la Portada correctamente!',
           'success'
         );
+        this.myFileInput.nativeElement.value = '';
+        this.uploadedPortada = null;
       }
     );
   }
